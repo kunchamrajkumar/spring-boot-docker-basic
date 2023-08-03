@@ -20,8 +20,8 @@ node {
     
     
      sh " docker login "
-         sh "docker tag sample:latest spring-boot-docker-basic:v1 "
-     sh " docker push spring-boot-docker-basic:v1 "
+         sh "docker tag sample:latest rajvam6806/spring-boot-docker-basic:v1 "
+     sh " docker push rajvam6806/spring-boot-docker-basic:v1 "
    }
    }
 
