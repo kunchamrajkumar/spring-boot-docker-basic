@@ -26,8 +26,9 @@ node {
    }
 
 stage ('deploy'){
+   def docker_run=docker run -d -p 8084:8000 rajvam6806/spring-boot-docker-basic:v1
   sshagent(['tomcat_ubuntu']) {
-    def docker_run=docker run -d -p 8084:8000 rajvam6806/spring-boot-docker-basic:v1
+   
      sh" ssh -o StrictHostKeyChecking=no ubuntu@52.90.52.155 ${docker_run} "
 }
 }
