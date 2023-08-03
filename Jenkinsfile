@@ -29,7 +29,7 @@ stage ('deploy'){
    def dockerRun = "docker run -d -p 8084:8000 rajvam6806/spring-boot-docker-basic:v1"
   sshagent(['tomcat_ubuntu']) {
    
-     sh" ssh -o StrictHostKeyChecking=no root@54.152.19.4 ${dockerRun} "
+     sh" ssh -o StrictHostKeyChecking=no ubuntu@54.152.19.4 ${dockerRun} "
 }
 }
 
