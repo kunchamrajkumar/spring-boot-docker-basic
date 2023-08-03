@@ -16,12 +16,14 @@ node {
      }
    
    stage ('docker tag&Push'){
-
-     sh "docker tag sample:latest spring-boot-docker-basic:v1 "
+      withCredentials([usernamePassword(credentialsId: 'docker_creds', passwordVariable: 'DockerPasswd', usernameVariable: 'Dockeruser')]) {
+    
+    
      sh " docker login -u rajvam6806 -p Harshu@11 https://hub.docker.com/ "
+         sh "docker tag sample:latest spring-boot-docker-basic:v1 "
      sh " docker push spring-boot-docker-basic:v1 "
    }
-  
+   }
 
 
 
