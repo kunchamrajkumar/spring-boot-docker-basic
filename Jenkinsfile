@@ -18,7 +18,7 @@ node {
    stage ('docker tag&Push'){
 
      sh "docker tag sample:latest spring-boot-docker-basic:v1 "
-     sh " docker login -u rajvam6806 -p Harshu@11"
+     sh " docker login -u rajvam6806 -p Harshu@11 https://hub.docker.com/ "
      sh " docker push spring-boot-docker-basic:v1 "
    }
   
