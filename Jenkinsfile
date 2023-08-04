@@ -41,7 +41,8 @@ node {
        stage ('deploy'){
           def dockerRun = "docker run -d -p 8084:8000 $REPOSITORY/$APPLICATION:$BUILD_NUMBER"
          sshagent(['tomcat_ubuntu']) {
-                 sh"docker rm -f $(docker ps)"
+                 sh"docker stop $(docker ps -q) )"
+                 sh "docker rm $(docker ps -q) "
             sh" ssh -o StrictHostKeyChecking=no ubuntu@3.88.26.89 ${dockerRun} "
             }
           }
