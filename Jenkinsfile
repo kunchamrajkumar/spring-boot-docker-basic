@@ -27,7 +27,7 @@ node {
           }
         
        stage ('tag & push to jfrog'){
-              withCredentials([usernamePassword(credentialsId: 'IDPAss', passwordVariable: '', usernameVariable: '')]) {
+             withCredentials([usernamePassword(credentialsId: 'AdminPass', passwordVariable: '', usernameVariable: '')]) {
            sh """
             
             docker login kkumar.jfrog.io
