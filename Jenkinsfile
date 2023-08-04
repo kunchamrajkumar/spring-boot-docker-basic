@@ -19,7 +19,7 @@ node {
    
        stage ('docker tag&Push image'){
              
-               sh " docker login -u rajvam6806 -p Harshu@11 https://hub.docker.com "
+               sh " docker login -u rajvam6806 -p Harshu@11  "
                sh "docker tag sample:latest $REPOSITORY/$APPLICATION:$BUILD_NUMBER "
                sh " docker push $REPOSITORY/$APPLICATION:$BUILD_NUMBER "
                sh "docker logout"
