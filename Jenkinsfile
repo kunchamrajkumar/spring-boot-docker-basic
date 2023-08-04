@@ -27,7 +27,7 @@ node {
           }
         
        stage ('tag & push to jfrog'){
-             withCredentials([usernamePassword(credentialsId: 'AdminPass', passwordVariable: '', usernameVariable: '')]) {
+            
            sh """
             
             docker login -u admin -p Password@123 https://kkumar.jfrog.io
@@ -36,7 +36,7 @@ node {
              docker push $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
              docker pull $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
              """
-          }
+          
        }
        stage ('deploy'){
           def dockerRun = "docker run -d -p 8084:8000 $REPOSITORY/$APPLICATION:$BUILD_NUMBER"
