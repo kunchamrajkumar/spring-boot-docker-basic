@@ -29,7 +29,7 @@ node {
                withCredentials([usernameColonPassword(credentialsId: 'jfrogID', variable: 'jfrg_Vrable')]) {
            sh """
             docker logout
-            docker login 
+            docker login -utheprinceraj1985@gmail.com kkumar.jfrog.io
             
              docker tag sample:latest $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
              docker push $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
