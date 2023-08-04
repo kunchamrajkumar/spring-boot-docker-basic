@@ -30,7 +30,7 @@ node {
               withCredentials([usernamePassword(credentialsId: 'IDPAss', passwordVariable: '', usernameVariable: '')]) {
            sh """
             
-            docker login -utheprinceraj1985@gmail.com kkumar.jfrog.io
+            docker login kkumar.jfrog.io
             
              docker tag sample:latest $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
              docker push $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
