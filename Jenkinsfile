@@ -26,16 +26,17 @@ node {
           }
         
        stage ('tag & push to jfrog'){
+               withCredentials([usernameColonPassword(credentialsId: 'jfrogID', variable: 'jfrg_Vrable')]) {
            sh """
             docker logout
-            docker login -utheprinceraj1985@gmail.com kkumar.jfrog.io
+            docker login 
             
              docker tag sample:latest $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
              docker push $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
              docker pull $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
              """
           }
-
+       }
        stage ('deploy'){
           def dockerRun = "docker run -d -p 8084:8000 $REPOSITORY/$APPLICATION:$BUILD_NUMBER"
          sshagent(['tomcat_ubuntu']) {
