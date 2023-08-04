@@ -1,5 +1,6 @@
 node {
-
+        def REPOSITORY = params.REPOSITORY
+        def APPLICATION = params.APPLICATION
   stage ('checkout'){
            git branch: 'main', credentialsId: 'git_creds', url: 'https://github.com/kunchamrajkumar/spring-boot-docker-basic.git'
  
@@ -20,13 +21,13 @@ node {
     
     
      sh " docker login "
-         sh "docker tag sample:latest rajvam6806/spring-boot-docker-basic:v1 "
-     sh " docker push rajvam6806/spring-boot-docker-basic:v1 "
+         sh "docker tag sample:latest $REPOSITORY/$APPLICATION:$BUILD_NUMBER "
+     sh " docker push $REPOSITORY/$APPLICATION:$BUILD_NUMBER "
    }
    }
 
 stage ('deploy'){
-   def dockerRun = "docker run -d -p 8084:8000 rajvam6806/spring-boot-docker-basic:v1"
+   def dockerRun = "docker run -d -p 8084:8000 $REPOSITORY/$APPLICATION:$BUILD_NUMBER"
   sshagent(['tomcat_ubuntu']) {
    
      sh" ssh -o StrictHostKeyChecking=no ubuntu@3.88.26.89 ${dockerRun} "
