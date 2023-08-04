@@ -18,12 +18,12 @@ node {
            }
    
        stage ('docker tag&Push image'){
-             withCredentials([usernamePassword(credentialsId: 'docker_creds', passwordVariable: '', usernameVariable: '')]) {
-               sh " docker login -u rajvam6806 https://hub.docker.com "
+             
+               sh " docker login -u rajvam6806 -p Harshu@11 https://hub.docker.com "
                sh "docker tag sample:latest $REPOSITORY/$APPLICATION:$BUILD_NUMBER "
                sh " docker push $REPOSITORY/$APPLICATION:$BUILD_NUMBER "
                sh "docker logout"
-           }
+           
           }
         
        stage ('tag & push to jfrog'){
