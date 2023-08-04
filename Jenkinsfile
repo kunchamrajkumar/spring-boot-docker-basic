@@ -27,6 +27,9 @@ node {
         
        stage ('tag & push to jfrog'){
            sh """
+            docker logout
+            docker login
+            
              docker tag sample:latest $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
              docker push $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
              docker pull $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
