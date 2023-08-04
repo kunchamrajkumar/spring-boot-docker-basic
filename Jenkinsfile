@@ -22,13 +22,14 @@ node {
                sh " docker login "
                sh "docker tag sample:latest $REPOSITORY/$APPLICATION:$BUILD_NUMBER "
                sh " docker push $REPOSITORY/$APPLICATION:$BUILD_NUMBER "
+               sh "docker logout"
            }
           }
         
        stage ('tag & push to jfrog'){
-               withCredentials([usernameColonPassword(credentialsId: 'jfrogID', variable: 'jfrg_Vrable')]) {
+              withCredentials([string(credentialsId: 'jfgrgg', variable: '')]) {
            sh """
-            docker logout
+            
             docker login -utheprinceraj1985@gmail.com kkumar.jfrog.io
             
              docker tag sample:latest $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
