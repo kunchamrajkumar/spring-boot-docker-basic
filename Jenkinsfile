@@ -17,14 +17,14 @@ node {
               sh "docker build -t sample:latest ."
            }
    
-       stage ('docker tag&Push image'){
+      /* stage ('docker tag&Push image'){
              withCredentials([usernamePassword(credentialsId: 'docker_creds', passwordVariable: 'DockerPasswd', usernameVariable: 'Dockeruser')]) {
                sh " docker login "
                sh "docker tag sample:latest $REPOSITORY/$APPLICATION:$BUILD_NUMBER "
                sh " docker push $REPOSITORY/$APPLICATION:$BUILD_NUMBER "
                sh "docker logout"
            }
-          }
+          }*/
         
        stage ('tag & push to jfrog'){
             
