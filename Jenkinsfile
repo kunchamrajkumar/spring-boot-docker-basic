@@ -1,7 +1,7 @@
 node {
         def REPOSITORY = params.REPOSITORY
         def APPLICATION = params.APPLICATION
-  
+        def JFROG_REPO = params.JFROG_REPO
         stage ('checkout'){
            git branch: 'main', credentialsId: 'git_creds', url: 'https://github.com/kunchamrajkumar/spring-boot-docker-basic.git'
  
