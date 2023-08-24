@@ -26,7 +26,7 @@ node {
            
           }
         
-       stage ('tag & push to jfrog'){
+       /*stage ('tag & push to jfrog'){
             
            sh """
             
@@ -37,14 +37,14 @@ node {
              docker pull $JFROG_REPO/$APPLICATION:$BUILD_NUMBER
              """
           
-       }
-       stage ('deploy'){
+       } */
+       /*stage ('deploy'){
           def dockerRun = "docker run -d -p 8084:8000 $REPOSITORY/$APPLICATION:$BUILD_NUMBER"
          sshagent(['tomcat_ubuntu']) {
                  
             sh" ssh -o StrictHostKeyChecking=no ubuntu@3.88.26.89 ${dockerRun} "
             }
-          }
+          } */
 
 
 
