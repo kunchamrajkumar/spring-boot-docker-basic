@@ -53,8 +53,8 @@ node {
                     sh "ls -la"
             sh " scp -o stricthostkeychecking=no deployment.yaml ubuntu@3.82.119.174:/home/ubuntu"
                     sh " chmod +x kubectl"
-                    sh "sudo cp kubectl /usr/bin/"
-             sh "ls -la"
+                    
+             
               sh " kubectl apply -f deployment.yaml"      
            
    }
