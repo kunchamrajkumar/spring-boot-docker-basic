@@ -7,7 +7,7 @@ node {
  
          }
 
-       stage ('build'){ 
+       /*stage ('build'){ 
             withMaven(globalMavenSettingsConfig: '', jdk: 'java', maven: 'maven', mavenSettingsConfig: '', traceability: true) {
              sh 'mvn clean package'
            }
@@ -24,7 +24,7 @@ node {
                sh " docker push rajvam6806/spring-boot-docker-basic:141 "
                sh " docker pull rajvam6806/spring-boot-docker-basic:141 "
            
-          }
+          }*/
         
        /*stage ('tag & push to jfrog'){
             
