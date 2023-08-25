@@ -52,7 +52,7 @@ node {
                     sh "pwd"
                     sh "ls"
             sh " scp -o stricthostkeychecking=no deployment.yaml ubuntu@3.82.119.174:/home/ubuntu"
-           sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.26.5/bin/linux/amd64/kubectl"
+           sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.26.5/bin/linux/amd64/kubectl" '
            sh 'chmod u+x ./kubectl' 
               sh " kubectl apply -f deployment.yaml"      
            
