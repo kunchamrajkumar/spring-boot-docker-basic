@@ -55,7 +55,7 @@ node {
                     sh " chmod +x kubectl"
                     
              
-              sh " kubectl apply -f deployment.yaml"      
+              sh " ssh ubuntu@3.82.119.174  kubectl apply -f deployment.yaml"      
            
    }
 
