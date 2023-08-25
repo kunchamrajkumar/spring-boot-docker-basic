@@ -62,7 +62,8 @@ node {
 }*/
        stage (deploy){
 
-               kubeconfig(credentialsId: 'KUBEconfig', serverUrl: '') {
+               withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'KUBEconfig', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                       
    sh "kubectl apply -f deployment.com"
 }
        }
