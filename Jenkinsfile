@@ -50,7 +50,7 @@ node {
 
             sshagent(['pem']) {
                     sh "pwd"
-                    sh "ls"
+                    sh "ls -la"
             sh " scp -o stricthostkeychecking=no deployment.yaml ubuntu@3.82.119.174:/home/ubuntu"
         
               sh " /usr/local/bin/kubectl apply -f deployment.yaml"      
