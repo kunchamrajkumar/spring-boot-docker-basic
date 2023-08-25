@@ -54,7 +54,7 @@ node {
             sh " scp -o stricthostkeychecking=no deployment.yaml ubuntu@3.82.119.174:/home/ubuntu"
                     sh " chmod +x kubectl"
              sh "ls -la"
-              sh " /usr/local/bin/kubectl apply -f deployment.yaml"      
+              sh " kubectl apply -f deployment.yaml"      
            
    }
 
