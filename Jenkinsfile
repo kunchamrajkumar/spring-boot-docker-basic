@@ -20,9 +20,9 @@ node {
        stage ('docker tag&Push image'){
              
                sh " docker login -u rajvam6806 -p Harshu@11  "
-               sh "docker tag sample:latest $REPOSITORY/$APPLICATION:$BUILD_NUMBER "
-               sh " docker push $REPOSITORY/$APPLICATION:$BUILD_NUMBER "
-               sh "docker logout"
+               sh "docker tag sample:latest rajvam6806/spring-boot-docker-basic:141 "
+               sh " docker push rajvam6806/spring-boot-docker-basic:141 "
+               sh " docker pull rajvam6806/spring-boot-docker-basic:141 "
            
           }
         
@@ -46,6 +46,12 @@ node {
             }
           } */
 
+   stage ('deploy to k8s'){
 
+            sshagent(['sshpemkey']) {
+            sh " scp -o stricthostkeychecking=no deployment.yaml ubuntu@3.82.119.174:/home/ubuntu"
+              sh " kubectl apply -f deployment.yaml"      
+           
+   }
 
 }
