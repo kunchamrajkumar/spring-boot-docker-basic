@@ -62,7 +62,7 @@ node {
 }*/
        stage (deploy){
 
-             kubeconfig(credentialsId: 'KUBEconfig', serverUrl: 'https://3.82.119.174:6443') {
+            kubeconfig(credentialsId: 'kubeconfig', serverUrl: 'http://3.82.119.174:6443') { {
     
    sh "kubectl apply -f deployment.com"
 }
