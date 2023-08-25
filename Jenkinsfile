@@ -46,7 +46,7 @@ node {
             }
           } */
 
-   stage ('deploy to k8s'){
+  /* stage ('deploy to k8s'){
 
             sshagent(['pem']) {
                     
@@ -59,5 +59,15 @@ node {
            
    }
 
+}*/
+       stage (deploy){
+
+               kubeconfig(credentialsId: 'KUBEconfig', serverUrl: '') {
+   sh "kubectl apply -f deployment.com"
 }
+       }
+
+
+
+        
 }
