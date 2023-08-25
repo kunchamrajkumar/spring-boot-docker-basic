@@ -49,13 +49,13 @@ node {
    stage ('deploy to k8s'){
 
             sshagent(['pem']) {
-                    sh "pwd"
-                    sh "ls -la"
-            sh " scp -o stricthostkeychecking=no deployment.yaml ubuntu@3.82.119.174:/home/ubuntu"
-                    sh " chmod +x kubectl"
                     
+            sh " scp -o stricthostkeychecking=no deployment.yaml ubuntu@3.82.119.174:/home/ubuntu"
+                   
+             sh " scp -o stricthostkeychecking=no service.yaml ubuntu@3.82.119.174:/home/ubuntu"       
              
               sh " ssh ubuntu@3.82.119.174  kubectl apply -f deployment.yaml"      
+            sh " ssh ubuntu@3.82.119.174  kubectl apply -f service.yaml"          
            
    }
 
