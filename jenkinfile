@@ -1,15 +1,15 @@
 node {
       
-        stage ('checkout'){
+       stage ('checkout'){
            git branch: 'main', credentialsId: 'git_creds', url: 'https://github.com/kunchamrajkumar/spring-boot-docker-basic.git'
  
          }
-      stage ('build'){ 
+       stage ('build'){ 
             withMaven(globalMavenSettingsConfig: '', jdk: 'java', maven: 'maven', mavenSettingsConfig: '', traceability: true) {
              sh 'mvn clean package'
            }
-          }
-         stage ('docker build image'){
+           }
+       stage ('docker build image'){
               sh "docker build -t sample:latest ."
            }
    
@@ -20,4 +20,18 @@ node {
                sh " docker push 001603125178.dkr.ecr.us-east-1.amazonaws.com/springboot:latest "
                sh " docker pull 001603125178.dkr.ecr.us-east-1.amazonaws.com/springboot:latest "
            
-          }
+            }
+
+         stage ('deploy to eks'){
+          withKubeConfig(caCertificate: '', clusterName: 'myeks-cluster', contextName: '', credentialsId: 'aws_kubeconf', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://9449D17F06AD6FE12BCBE27793BC0932.gr7.us-east-1.eks.amazonaws.com') {
+                  sh "kubectl get node"
+                  sh "kubectl apply -f deployment.yaml"
+                  sh "kubectl apply -f service.yaml"
+
+                         }
+             }
+
+
+}
+
+
