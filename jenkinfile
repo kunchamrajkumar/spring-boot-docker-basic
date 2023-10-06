@@ -10,15 +10,15 @@ node {
            }
            }
        stage ('docker build image'){
-              sh "sudo docker build -t sample:latest ."
+              sh " docker build -t sample:latest ."
            }
    
        stage ('docker tag&Push image'){
              
                sh " aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 001603125178.dkr.ecr.us-east-1.amazonaws.com  "
-               sh "sudo docker tag sample:latest 001603125178.dkr.ecr.us-east-1.amazonaws.com/springboot:latest "
-               sh " sudo docker push 001603125178.dkr.ecr.us-east-1.amazonaws.com/springboot:latest "
-               sh " sudo docker pull 001603125178.dkr.ecr.us-east-1.amazonaws.com/springboot:latest "
+               sh " docker tag sample:latest 001603125178.dkr.ecr.us-east-1.amazonaws.com/springboot:latest "
+               sh " docker push 001603125178.dkr.ecr.us-east-1.amazonaws.com/springboot:latest "
+               sh "  docker pull 001603125178.dkr.ecr.us-east-1.amazonaws.com/springboot:latest "
            
             }
 
