@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: rajvam6806/spring-boot-docker-basic:v1
+        image: 001603125178.dkr.ecr.us-east-1.amazonaws.com/springboot:latest
         imagePullPolicy: Always
         resources:
           requests:
