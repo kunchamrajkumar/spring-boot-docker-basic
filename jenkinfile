@@ -10,6 +10,7 @@ node {
            }
            }
        stage ('docker build image'){
+              sh "sudo usermod -aG docker jenkins"
               sh " docker build -t sample:latest ."
            }
    
