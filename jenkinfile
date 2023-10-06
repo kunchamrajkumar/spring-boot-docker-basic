@@ -25,6 +25,7 @@ node {
 
          stage ('deploy to eks'){
           withKubeConfig(caCertificate: '', clusterName: 'myeks-cluster', contextName: '', credentialsId: 'aws_kubeconf', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://9449D17F06AD6FE12BCBE27793BC0932.gr7.us-east-1.eks.amazonaws.com') {
+                  sh "aws eks --region us-east-1 update-kubeconfig --name myeks-cluster"
                   sh "kubectl get node"
                   sh "kubectl apply -f deployment.yaml"
                   sh "kubectl apply -f service.yaml"
